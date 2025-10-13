@@ -1,0 +1,21 @@
+/*-------TABLA----*/
+
+body {
+    font-family: "arial";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: azure;
+
+  }
+
+.contenedorTabla {
+    position: relative; /*Contendor preferente/padre*/
+    background: #285fce;
+    border-radius: 12px;
+    width: 550px;
+    height: 550px;
+    top: 170px;
+    
+}
+
