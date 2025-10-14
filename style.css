@@ -12,10 +12,28 @@ body {
 .contenedorTabla {
     position: relative; /*Contendor preferente/padre*/
     background: #285fce;
-    border-radius: 12px;
+     /*border-radius: 7px;*/
     width: 550px;
     height: 550px;
     top: 170px;
     
 }
 
+
+/*
+Para llamar elementos por su id utilizo el #
+Cojo las imágenes de las filas de la tabla
+
+display: disposición dentro del contenedor 
+display: block -> el elemento ocupa toda la línea horizontal, empujando hacía abajo el resto (<div>, <p>, <h1>)
+display: inline -> el elemento fluye dentro del texto 
+display: inline-block -> inline respecto a otros elementos, pero se define ancho y alto como en block 
+*/
+#Tabla td img {
+
+  width: 179px;
+  height: 179px;
+  /*border-radius: 7px;*/
+  display: block;
+  
+}
