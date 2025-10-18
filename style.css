@@ -53,7 +53,7 @@ INICIAR
   color: white;
   font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   top: -45px;
   right: 306px;
@@ -75,7 +75,7 @@ GUARDAR PARTIDA
   color: white;
   font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   top: -45px;
   right: 150px;
@@ -97,7 +97,7 @@ CARGAR PARTIDA
   color: white;
   font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   top: -45px;
   right: 5px;
@@ -118,13 +118,13 @@ CARGAR PARTIDA
 .contenedorTabla .mensajes{
 
   position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: -120px;
+  left: 5px;
+  color: black;
   background-color: #ffd700;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
+  padding: 10px 10px; /*con relleno, arriba/abajo, izquierda/derecha*/
+  border-radius: 10px; /*redondeado*/
+  font-weight: bold; /*negrita*/
   display: none; /* solo se muestra cuando hay un mensaje*/
 
 }

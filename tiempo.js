@@ -13,6 +13,7 @@ class Tiempo{
         if(!this.activo){
         this.activo = true; //comienza la partida === comienza el tiempo
         this.ultimoTiempoRegistrado = Date.now();
+        this.bucleActualizacion();
         }
     }
 
@@ -23,6 +24,32 @@ class Tiempo{
         this.activo = true;
         this.mostrarTiempo();
     }
+
+    reanudar(){
+        //Igual que iniciar(), pero sin reiniciar segundos
+        if(!this.activo){
+            this.activo = true;
+            this.ultimoTiempoRegistrado = Date.now();
+
+        }
+    }
+
+    bucleActualizacion(){
+        let self = this;
+        let INTERVALO_MS = 1000;
+        setInterval(function () {
+            if (self.activo) {
+                let ahora = Date.now();
+                let segundosTranscurridos = Math.floor((ahora - self.ultimoTiempoRegistrado) / 1000);
+                if (segundosTranscurridos > 0) {
+                    self.segundos += segundosTranscurridos;
+                    self.ultimoTiempoRegistrado = ahora;
+                    self.mostrarTiempo();
+                }
+            }
+        }, INTERVALO_MS);
+    }
+
 
     mostrarTiempo(){
         let tiempoRegistrado = document.getElementById("tiempo");

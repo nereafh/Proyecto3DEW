@@ -317,19 +317,27 @@ class Rompecabezas{
         let movimientosGuardado = localStorage.getItem("movimientos");
         let tiempoGuardado = localStorage.getItem("tiempo");
 
-        if(ordenGuardado && movimientosGuardado && tiempoGuardado){
+       if (!ordenGuardado || !movimientosGuardado || !tiempoGuardado) {
+        this.mostrarMensaje("No hay partida guardada.");
+        return;
+    }
 
-            this.orden = ordenGuardado.split(","); //
-            this.movimientos = movimientosGuardado;
-            this.tiempoObj.setSegundos(tiempoGuardado);
-            this.tiempoObj.iniciar();
-            this.actualizar();
-            this.mostrarMensaje("Partida cargada correctamente.")
-            
-        } else {
-            this.mostrarMensaje("No hay partida guardada.");
-        }
 
+    //Restauro valores
+    this.orden = ordenGuardado.split(","); // texto -> array
+    this.movimientos = parseInt(movimientosGuardado);
+    this.tiempoObj.setSegundos(parseInt(tiempoGuardado));
+
+
+    //Actualizo la interfaz 
+    this.actualizar();
+    document.getElementById("contador").innerText = "Movimientos: " + this.movimientos;
+    document.getElementById("tiempo").innerText = "Tiempo: " + this.tiempoObj.obtenerMinSeg();
+
+    //Reanudo sin reinciiar el tiempo, cojo la función de la clase tiempo mediante el objeto tiempoObj
+    this.tiempoObj.reanudar();
+
+    this.mostrarMensaje("Partida cargada correctamente");
     }
 
     mostrarMensaje(texto){
