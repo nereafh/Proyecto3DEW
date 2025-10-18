@@ -13,9 +13,9 @@ body {
     position: relative; /*Contendor preferente/padre*/
     background: #285fce;
      /*border-radius: 7px;*/
-    width: 550px;
-    height: 550px;
-    top: 170px;
+    width: 450px;
+    height: 450px;
+    top: 130px;
     
 }
 
@@ -31,9 +31,31 @@ display: inline-block -> inline respecto a otros elementos, pero se define ancho
 */
 #Tabla td img {
 
-  width: 179px;
-  height: 179px;
+  width: 145.7px;
+  height: 145.7px;
   /*border-radius: 7px;*/
   display: block;
   
+}
+
+
+/*-------------BOTONES------------*/
+
+/*
+  border: none; -> 
+  border-radius: 8px; -> 
+*/
+.contenedorTabla .botones .btnInicio{
+  position: absolute;
+  background-color: #1e40af;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  top: -30px;
+}
+
+.contenedorTabla .botones .btnInicio:hover{ /*Cuando pase por encima el cursor*/
+  background-color: #3b82f6;
 }
