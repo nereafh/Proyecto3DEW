@@ -1,0 +1,6 @@
+class Tiempo{
+
+    constructor(id){
+        
+    }   
+}
