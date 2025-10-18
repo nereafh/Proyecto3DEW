@@ -47,12 +47,6 @@
         </table>
 
         
-        <!-- ------------ CONTADOR MOVIMIENTOS ------------- -->
-            <div id="contador" class="contador">Movimientos: </div>
-
-        <!-- ------------ CONTADOR TIEMPO ------------- -->
-            <div id="tiempo" class="tiempo">Tiempo: </div>
-
 
 
 
@@ -63,16 +57,27 @@
                 btnPiezas: click para moverlas, la pieza y el espacio intercambian lugares
            -->
         <div class="botones">
-                <button id="btnInicio" class="btnInicio">INICIAR</button>
-           </div>
+            <button id="btnInicio" class="btnInicio">INICIAR</button>
             <!-- -----------GUARDAR Y CARGAR PARTIDA -------------------->
-             <div id="btnGuardar" class="btnGuardar">Guardar partida</div>
-             <div id="btnCargar" class="btnCargar">Cargar partida</div>
+             <button id="btnGuardar" class="btnGuardar">Guardar partida</button>
+             <button id="btnCargar" class="btnCargar">Cargar partida</button>
+        </div>
 
-       </div>
+             <!-- ------------ CONTADOR MOVIMIENTOS ------------- -->
+            <div id="contador" class="contador">Movimientos: </div>
+            <!-- ------------ CONTADOR TIEMPO ------------- -->
+            <div id="tiempo" class="tiempo">Tiempo: </div>
 
+            <!-- ------------ MENSAJES ------------- -->
+            <div id="mensajes" class="mensajes"></div>
+
+            <!-- ------------ RANKING ------------- -->
+            <div id="ranking" class="ranking"></div>
+
+        </div>
        
     <script src="rompecabezas.js"></script>
+    <script src="tiempo.js"></script>
     <script src="script.js"></script>
 </body>
 </html></main>

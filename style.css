@@ -42,8 +42,10 @@ display: inline-block -> inline respecto a otros elementos, pero se define ancho
 /*-------------BOTONES------------*/
 
 /*
-  border: none; -> 
-  border-radius: 8px; -> 
+INICIAR
+  border: none; -> quita el forde predeterminado del elemento <button>, esto
+  no afecta al relleno interno: padding: arriba/abajo px, izquierda/derecha px
+  border-radius: 8px; -> bordes redondeados
 */
 .contenedorTabla .botones .btnInicio{
   position: absolute;
@@ -53,9 +55,76 @@ display: inline-block -> inline respecto a otros elementos, pero se define ancho
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  top: -30px;
+  top: -45px;
+  right: 306px;
+
+  padding: 10px 40px; /* relleno interno */
+  min-width: 100px;   /* ancho mínimo */
 }
 
 .contenedorTabla .botones .btnInicio:hover{ /*Cuando pase por encima el cursor*/
   background-color: #3b82f6;
+}
+
+/*
+GUARDAR PARTIDA
+*/
+.contenedorTabla .botones .btnGuardar{
+  position: absolute;
+  background-color: #20af1e;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  top: -45px;
+  right: 150px;
+
+  padding: 10px 20px; /* relleno interno */
+  min-width: 100px;   /* ancho mínimo */
+}
+
+.contenedorTabla .botones .btnGuardar:hover{ /*Cuando pase por encima el cursor*/
+  background-color:  #04ff00;
+}
+
+/*
+CARGAR PARTIDA
+*/
+.contenedorTabla .botones .btnCargar{
+  position: absolute;
+  background-color: #731eaf;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  top: -45px;
+  right: 5px;
+
+  padding: 10px 20px; /* relleno interno */
+  min-width: 100px;   /* ancho mínimo */
+
+}
+
+.contenedorTabla .botones .btnCargar:hover{ /*Cuando pase por encima el cursor*/
+  background-color: #9500ff;
+}
+
+
+/*------------MENSAJES-----------
+
+*/
+.contenedorTabla .mensajes{
+
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffd700;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  display: none; /* solo se muestra cuando hay un mensaje*/
+
 }

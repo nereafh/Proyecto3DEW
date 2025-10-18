@@ -1,6 +1,43 @@
+/*
+    Para manipular contenido dentro de un HTML:
+    --------------innerText---------------------
+    Obtiene o cambia el texto visible dentro de un elemento 
+    
+    Ejemplo de obtención: 
+    <div id="contador" class="contador">Movimientos: </div> -> en HTML
+
+    let contador = document.getElementById("contador");
+    console.log(innerText);
+
+
+   Ejemplo de cambio:
+   <div id="contador" class="contador">Movimientos: </div> -> en HTML
+
+   let contador = document.getElementById("contador");
+   console.log(div.innerText);
+   contador.innerText = "Cambio Texto"; -> en js //Cambia el contenido visible
+
+  -------------------innerHTML----------------------
+   Obtiene o cambia todo el contenido HTML dentro del elemento incluyendo todo
+
+    Ejemplo de obtención: 
+    <div id="contador" class="contador"><h1>Movimientos:</h1> </div> -> en HTML
+
+    let contador = document.getElementById("contador");
+    console.log(contador.innerHTML); -> js 
+
+    Ejemplo de cambio:
+    <div id="contador" class="contador"><h1>Movimientos:</h1> </div> -> en HTML
+
+    let contador = document.getElementById("contador");
+    console.log(div.innerText);
+    contador.innerText = "Cambio <h2>Texto</h2>"; -> en js //Cambia el contenido visible
+    */
+
+
 class Rompecabezas{
 
-    constructor(piezas, piezaVacia){
+    constructor(piezas, piezaVacia, tiempoObj){
         this.piezas = piezas;
         this.piezaVacia = piezaVacia;
 
@@ -11,6 +48,8 @@ class Rompecabezas{
         ];
 
         this.movimientos = 0; //Añado un atributo movimientos que hará de contador por ello lo inicializo a 0
+
+        this.tiempoObj = tiempoObj;
     }
 
     /*
@@ -46,11 +85,23 @@ class Rompecabezas{
             this.orden[j] = intercambioPiezas; //coloco en la posición j el valor original de la posición i
         }
 
-        //Actualizo el puzzle
+        /*
+        Actualizo el puzzle
+        Actualizo el tiempo 
+        Actualizo los movimientos
+        Actualizo el contador
+        */
         this.actualizar();
+        this.tiempoObj.reiniciar();
+        this.movimientos = 0;
+        this.actualizarContador();
+
+
+        
 
    }
 
+   
 
     /*
     Actualizo las imágenes y el contador de movimientos
@@ -80,7 +131,23 @@ class Rompecabezas{
         }
     }
 
+    /*
+    Actualizo el tiempo
+    Actualizo el contador
+    */
+   this.tiempoObj.actualizarSegundos();
+   this.actualizarContador();
+
    
+   }
+
+         /*
+    ------------- CONTADOR MOVIMIENTOS ----------------
+        */
+   actualizarContador(){
+    let contador  = document.getElementById("contador");
+    contador.innerText = "Movimientos: " + this.movimientos; //los movimientos
+    
    }
 
    /*
@@ -100,6 +167,7 @@ class Rompecabezas{
             hueco = i;
             break;
         }
+
 
     }
 
@@ -156,6 +224,9 @@ class Rompecabezas{
    }
 
    if(puedoMover){
+
+        this.tiempoObj.actualizarSegundos();
+
         //Intercambio de pieza con el hueco
         let intercambioPiezas = this.orden[posicion]; //posición inicial que está en la variable posicion que es el indice i
         this.orden[posicion] = this.orden[hueco]; //posicion el valor que estaba en hueco
@@ -163,51 +234,110 @@ class Rompecabezas{
         
         this.movimientos ++; //incremento el contador
         this.actualizar(); //actualizo tabla 
-         /*
-    ------------- CONTADOR MOVIMIENTOS ----------------
 
-    Para manipular contenido dentro de un HTML:
-    --------------innerText---------------------
-    Obtiene o cambia el texto visible dentro de un elemento 
+
+        //Compruebo si el puzzle está o no completo
+        if(this.estaCompleto()){
+            this.tiempoObj.pausar();
+            
+            this.mostrarMensaje("¡Felicidades! Completado en " +
+                 this.movimientos + " movimientos y "
+                  + this.tiempoObj.obtenerMinSeg())
+
+            this.actualizarRanking();
+
+            
+        }
+
+
+        
+
+
+   }
+
+
+   }
+
+
+   /*
+   Si las piezas no corresponden con cada uno de sus índices quiere decir que no está completo -> false, 
+   sino sí lo está -> true 
+   */
+   estaCompleto(){
+    for(let i = 0; i < this.orden.length; i++){
+        if(this.orden[i] !== this.piezas[i]){
+            return false;
+        } 
+    }
+    return true;
+   }
+
+   /*
+   ------------LOCALSTORAGE--------------------
+   */
+   actualizarRanking(){
+    let ranking = document.getElementById("ranking");
+    let mejorRanking = localStorage.getItem("mejorTiempo");
+    let actualRanking = this.tiempoObj.getSegundos(); 
+
+    if(!mejorRanking || actualRanking < Number(mejorRanking)){
+
+        localStorage.setItem("mejorTiempo", actualRanking);
+        mejorRanking = actualRanking;
+
+        this.mostrarMensaje("¡Has conseguido un nuevo récord personal!")
+
+    }   else {
+        
+        
+        ranking.innerText = "Mejor tiempo: " + this.obtenerMinSeg();
+    }
+
     
-    Ejemplo de obtención: 
-    <div id="contador" class="contador">Movimientos: </div> -> en HTML
-
-    let contador = document.getElementById("contador");
-    console.log(innerText);
-
-
-   Ejemplo de cambio:
-   <div id="contador" class="contador">Movimientos: </div> -> en HTML
-
-   let contador = document.getElementById("contador");
-   console.log(div.innerText);
-   contador.innerText = "Cambio Texto"; -> en js //Cambia el contenido visible
-
-  -------------------innerHTML----------------------
-   Obtiene o cambia todo el contenido HTML dentro del elemento incluyendo todo
-
-    Ejemplo de obtención: 
-    <div id="contador" class="contador"><h1>Movimientos:</h1> </div> -> en HTML
-
-    let contador = document.getElementById("contador");
-    console.log(contador.innerHTML); -> js 
-
-    Ejemplo de cambio:
-    <div id="contador" class="contador"><h1>Movimientos:</h1> </div> -> en HTML
-
-    let contador = document.getElementById("contador");
-    console.log(div.innerText);
-    contador.innerText = "Cambio <h2>Texto</h2>"; -> en js //Cambia el contenido visible
-    */
-    document.getElementById("contador").innerText = "Movimientos: " + this.movimientos; //Asocio el contador para que se muestre cuando vaya cambiando
-
    }
 
+   
+    obtenerMinSeg(segundos){
+        let min = Math.floor(segundos / 60); //obtener los minutos
+        let seg = segundos % 60; //obtener los segundos
+        return "Minutos: " + min + " Segundos: " + seg;
+    }
 
-   }
+    guardarPartida(){
+        localStorage.setItem("orden", this.orden.toString());
+        localStorage.setItem("movimientos", this.movimientos);
+        localStorage.setItem("tiempo", this.tiempoObj.getSegundos());
+        this.tiempoObj.pausar();
+        this.mostrarMensaje("Partida guardada correctamente.");
+    }
 
+    cargarPartida(){
 
+        let ordenGuardado = localStorage.getItem("orden");
+        let movimientosGuardado = localStorage.getItem("movimientos");
+        let tiempoGuardado = localStorage.getItem("tiempo");
+
+        if(ordenGuardado && movimientosGuardado && tiempoGuardado){
+
+            this.orden = ordenGuardado.split(","); //
+            this.movimientos = movimientosGuardado;
+            this.tiempoObj.setSegundos(tiempoGuardado);
+            this.tiempoObj.iniciar();
+            this.actualizar();
+            this.mostrarMensaje("Partida cargada correctamente.")
+            
+        } else {
+            this.mostrarMensaje("No hay partida guardada.");
+        }
+
+    }
+
+    mostrarMensaje(texto){
+
+        let mensaje = document.getElementById("mensajes");
+        mensaje.innerText = texto;
+        mensaje.style.display = "block";
+    }
 
 
 }
