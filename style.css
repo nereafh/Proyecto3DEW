@@ -13,15 +13,12 @@ body {
     position: relative; /*Contendor preferente/padre*/
     background: #285fce;
      /*border-radius: 7px;*/
-<<<<<<< HEAD
     width: 463px;
     height: 463px;
     top: 200px;
-=======
-    width: 450px;
-    height: 450px;
-    top: 130px;
->>>>>>> a4aed5655069a01f6790ed4aaea0c491b9e03d32
+
+    
+
     
 }
 
@@ -37,13 +34,9 @@ display: inline-block -> inline respecto a otros elementos, pero se define ancho
 */
 #Tabla td img {
 
-<<<<<<< HEAD
+
   width: 150px;
   height: 150px;
-=======
-  width: 145.7px;
-  height: 145.7px;
->>>>>>> a4aed5655069a01f6790ed4aaea0c491b9e03d32
   /*border-radius: 7px;*/
   display: block;
   
