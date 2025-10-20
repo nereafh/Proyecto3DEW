@@ -13,9 +13,15 @@ body {
     position: relative; /*Contendor preferente/padre*/
     background: #285fce;
      /*border-radius: 7px;*/
+<<<<<<< HEAD
     width: 463px;
     height: 463px;
     top: 200px;
+=======
+    width: 450px;
+    height: 450px;
+    top: 130px;
+>>>>>>> a4aed5655069a01f6790ed4aaea0c491b9e03d32
     
 }
 
@@ -31,9 +37,105 @@ display: inline-block -> inline respecto a otros elementos, pero se define ancho
 */
 #Tabla td img {
 
+<<<<<<< HEAD
   width: 150px;
   height: 150px;
+=======
+  width: 145.7px;
+  height: 145.7px;
+>>>>>>> a4aed5655069a01f6790ed4aaea0c491b9e03d32
   /*border-radius: 7px;*/
   display: block;
   
+}
+
+
+/*-------------BOTONES------------*/
+
+/*
+INICIAR
+  border: none; -> quita el forde predeterminado del elemento <button>, esto
+  no afecta al relleno interno: padding: arriba/abajo px, izquierda/derecha px
+  border-radius: 8px; -> bordes redondeados
+*/
+.contenedorTabla .botones .btnInicio{
+  position: absolute;
+  background-color: #1e40af;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  top: -45px;
+  right: 306px;
+
+  padding: 10px 40px; /* relleno interno */
+  min-width: 100px;   /* ancho mínimo */
+}
+
+.contenedorTabla .botones .btnInicio:hover{ /*Cuando pase por encima el cursor*/
+  background-color: #3b82f6;
+}
+
+/*
+GUARDAR PARTIDA
+*/
+.contenedorTabla .botones .btnGuardar{
+  position: absolute;
+  background-color: #20af1e;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  top: -45px;
+  right: 150px;
+
+  padding: 10px 20px; /* relleno interno */
+  min-width: 100px;   /* ancho mínimo */
+}
+
+.contenedorTabla .botones .btnGuardar:hover{ /*Cuando pase por encima el cursor*/
+  background-color:  #04ff00;
+}
+
+/*
+CARGAR PARTIDA
+*/
+.contenedorTabla .botones .btnCargar{
+  position: absolute;
+  background-color: #731eaf;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  top: -45px;
+  right: 5px;
+
+  padding: 10px 20px; /* relleno interno */
+  min-width: 100px;   /* ancho mínimo */
+
+}
+
+.contenedorTabla .botones .btnCargar:hover{ /*Cuando pase por encima el cursor*/
+  background-color: #9500ff;
+}
+
+
+/*------------MENSAJES-----------
+
+*/
+.contenedorTabla .mensajes{
+
+  position: absolute;
+  top: -120px;
+  left: 5px;
+  color: black;
+  background-color: #ffd700;
+  padding: 10px 10px; /*con relleno, arriba/abajo, izquierda/derecha*/
+  border-radius: 10px; /*redondeado*/
+  font-weight: bold; /*negrita*/
+  display: none; /* solo se muestra cuando hay un mensaje*/
+
 }
