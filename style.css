@@ -13,9 +13,9 @@ body {
     position: relative; /*Contendor preferente/padre*/
     background: #285fce;
      /*border-radius: 7px;*/
-    width: 550px;
-    height: 550px;
-    top: 170px;
+    width: 463px;
+    height: 463px;
+    top: 200px;
     
 }
 
@@ -31,8 +31,8 @@ display: inline-block -> inline respecto a otros elementos, pero se define ancho
 */
 #Tabla td img {
 
-  width: 179px;
-  height: 179px;
+  width: 150px;
+  height: 150px;
   /*border-radius: 7px;*/
   display: block;
   
