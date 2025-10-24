@@ -274,6 +274,10 @@ class Rompecabezas{
 
    /*
    ------------LOCALSTORAGE--------------------
+    Actualizo el ranking si el tiempo actual es mejor que el guardado en localStorage
+    Muestra el mejor tiempo en el elemento HTML con id "ranking"
+    Si el tiempo actual es mejor que el guardado, actualiza el localStorage con el nuevo mejor tiempo
+    y muestra un mensaje de felicitación
    */
    actualizarRanking(){
     let ranking = document.getElementById("ranking");
@@ -296,13 +300,20 @@ class Rompecabezas{
     
    }
 
-   
+   //Convierte los segundos a minutos y segundos
     obtenerMinSeg(segundos){
         let min = Math.floor(segundos / 60); //obtener los minutos
         let seg = segundos % 60; //obtener los segundos
         return "Minutos: " + min + " Segundos: " + seg;
     }
 
+    /*
+    Guarda en el localStorage el estado actual del rompecabezas:
+    el orden de las piezas (array convertido a cadena de texto),
+    el número de movimientos realizados,
+    y el tiempo transcurrido en segundos.
+    Además, pausa el contador de tiempo y muestra un mensaje de confirmación al usuario.
+    */
     guardarPartida(){
         localStorage.setItem("orden", this.orden.toString());
         localStorage.setItem("movimientos", this.movimientos);
@@ -311,6 +322,11 @@ class Rompecabezas{
         this.mostrarMensaje("Partida guardada correctamente.");
     }
 
+    /*
+    Recupera del localStorage el estado guardado del rompecabezas:
+    el orden de las piezas, el número de movimientos y el tiempo transcurrido.
+    Si no hay partida guardada, muestra un mensaje al usuario.
+    */
     cargarPartida(){
 
         let ordenGuardado = localStorage.getItem("orden");
@@ -340,6 +356,10 @@ class Rompecabezas{
     this.mostrarMensaje("Partida cargada correctamente");
     }
 
+    /*
+    Muestra un mensaje en el elemento HTML recogiendo el id "mensajes"
+    Lo uso para mostrar mensajes al usuario, como cuando gana, guarda o carga la partida
+    */
     mostrarMensaje(texto){
 
         let mensaje = document.getElementById("mensajes");
